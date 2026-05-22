@@ -1,0 +1,288 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  background: radial-gradient(circle at 10% 20%, #0a0a1a 0%, #010105 100%);
+  overflow-x: hidden;
+}
+
+/* Glassmorphism premium */
+.glass-card {
+  background: rgba(18, 18, 35, 0.5);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 25px 45px -12px rgba(168, 85, 247, 0.25);
+}
+
+/* Animated gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #C084FC, #60A5FA, #F472B6, #A855F7);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating animation */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a855f7;
+  border-radius: 20px;
+}
+
+/* Button primary */
+.btn-primary {
+  background: linear-gradient(95deg, #8B5CF6, #D946EF);
+  transition: all 0.3s;
+  box-shadow: 0 4px 14px 0 rgba(139, 92, 246, 0.4);
+}
+
+.btn-primary:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6);
+}
+
+/* Skill badge */
+.skill-badge {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border-radius: 40px;
+  padding: 0.35rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Project card image container */
+.project-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.project-card-link:hover .project-img {
+  transform: scale(1.05);
+}
+
+.project-card-link:hover .overlay-glow {
+  opacity: 1;
+}
+
+.overlay-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(217, 70, 239, 0.2));
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  border-radius: 1.5rem;
+}
+
+/* Profile image style */
+.profile-img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(168, 85, 247, 0.6);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
+}
+
+/* ========== ADDITIONAL STYLES FOR CAPSTONE PAGE ========== */
+
+/* Feature icon for system features */
+.feature-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(139, 92, 246, 0.15);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #C084FC;
+}
+
+/* Screenshot card animation */
+.screenshot-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.screenshot-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 35px -15px rgba(139, 92, 246, 0.3);
+}
+
+/* Clickable image cursor & effect */
+.clickable-img {
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.clickable-img:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+}
+
+/* ========== MODAL STYLES FOR FULL-SCREEN IMAGE VIEWER ========== */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 1rem;
+  box-shadow: 0 0 50px rgba(139, 92, 246, 0.3);
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  background: rgba(0, 0, 0, 0.5);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  color: #a855f7;
+  transform: scale(1.1);
+}
+
+.modal-caption {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  width: fit-content;
+  margin: 0 auto;
+  border-radius: 40px;
+  backdrop-filter: blur(5px);
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+@media (max-width: 768px) {
+  .glass-card {
+    border-radius: 1.5rem;
+  }
+  
+  .project-img {
+    height: 200px;
+  }
+  
+  .profile-img {
+    width: 110px;
+    height: 110px;
+  }
+  
+  /* Modal responsive */
+  .modal-close {
+    top: 15px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+  }
+  
+  .modal-caption {
+    font-size: 0.8rem;
+    bottom: 15px;
+  }
+}

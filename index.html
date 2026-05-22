@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Andrei Mendoza | Web Portfolio</title>
+  <!-- Tailwind CSS + Bootstrap Icons + Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body class="text-white">
+
+  <!-- Navigation -->
+  <nav class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 w-[92%] md:w-auto md:min-w-[520px] max-w-5xl transition-all duration-300">
+    <div class="glass-card py-3 px-6 rounded-2xl flex justify-between items-center shadow-2xl">
+      <a href="#" class="text-2xl font-black tracking-tight"><span class="gradient-text">✦ ANDREI</span></a>
+      <div class="hidden md:flex gap-7 text-sm font-medium">
+        <a href="#home" class="hover:text-purple-300 transition duration-300">Home</a>
+        <a href="#work" class="hover:text-purple-300 transition duration-300">Works</a>
+        <a href="#skills" class="hover:text-purple-300 transition duration-300">Skills</a>
+        <a href="#contact" class="hover:text-purple-300 transition duration-300">Contact</a>
+      </div>
+      <i class="bi bi-list text-2xl md:hidden cursor-pointer" id="mobileMenuBtn"></i>
+    </div>
+    <div id="mobileMenu" class="glass-card mt-3 p-4 rounded-2xl flex flex-col gap-3 text-center md:hidden hidden backdrop-blur-xl">
+      <a href="#home" class="py-2 hover:bg-white/10 rounded-xl">Home</a>
+      <a href="#work" class="py-2 hover:bg-white/10 rounded-xl">Works</a>
+      <a href="#skills" class="py-2 hover:bg-white/10 rounded-xl">Skills</a>
+      <a href="#contact" class="py-2 hover:bg-white/10 rounded-xl">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION - Name and Bachelor's Degree with PROFILE PICTURE on top -->
+  <section id="home" class="min-h-screen flex items-center justify-center relative px-6 pt-24 overflow-hidden">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px] animate-pulse"></div>
+    <div class="absolute bottom-1/3 right-10 w-80 h-80 bg-pink-500/20 rounded-full blur-[110px] animate-pulse delay-700"></div>
+    <div class="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
+      
+      <!-- PROFILE PICTURE - nakalagay sa itaas ng pangalan -->
+      <div class="mb-6">
+        <img src="img/avatar.jfif" alt="Andrei Mendoza Profile" class="profile-img">
+      </div>
+      
+      <div class="glass-card px-5 py-2 rounded-full inline-flex items-center gap-2 mb-8 backdrop-blur-md">
+        <i class="bi bi-stars text-purple-300 text-sm"></i>
+        <span class="text-xs font-mono tracking-wide">✦ Junior Web Developer ✦</span>
+      </div>
+      <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight leading-[1.1]">
+        <span class="gradient-text">Andrei Fernan Mendoza</span>
+      </h1>
+      <div class="mt-5 flex flex-wrap justify-center gap-3">
+        <div class="glass-card px-6 py-3 rounded-full backdrop-blur-md border border-purple-400/30">
+          <i class="bi bi-mortarboard-fill text-purple-300 mr-2"></i>
+          <span class="font-semibold text-lg">Bachelor of Science in Information Technology</span>
+        </div>
+      </div>
+      <p class="text-gray-200 max-w-2xl mt-7 text-lg md:text-xl leading-relaxed">
+        I blend <strong class="text-purple-300">engineering precision</strong> with <strong class="text-pink-300">creative aesthetics</strong> — crafting immersive digital experiences that feel like tomorrow.
+      </p>
+      <div class="flex flex-wrap gap-5 mt-12 justify-center">
+        <a href="#work" class="btn-primary px-8 py-3.5 rounded-full font-semibold text-white transition flex items-center gap-2">View Portfolio <i class="bi bi-arrow-right-short text-xl"></i></a>
+        <a href="#contact" class="glass-card px-7 py-3.5 rounded-full font-medium border border-white/20 hover:bg-white/10 transition">Contact Me</a>
+      </div>
+      <div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce hidden sm:block">
+        <div class="w-6 h-10 rounded-full border-2 border-purple-400/50 flex justify-center">
+          <div class="w-1 h-2 bg-purple-400 rounded-full mt-2 animate-ping"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS Section - 2 CLICKABLE PROJECTS only with IMAGES -->
+  <section id="work" class="py-28 px-6 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/5 to-transparent"></div>
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="skill-badge text-purple-300 border-purple-500/30">✦ featured projects</span>
+        <h2 class="text-4xl md:text-5xl font-bold mt-5">Immersive <span class="gradient-text">Projects</span></h2>
+        <p class="text-gray-400 max-w-2xl mx-auto mt-3">Click any project card to view details — each image is fully customizable</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+        
+        <!-- PROJECT 1 - CLICKABLE CARD with Image (External link - opens new tab) -->
+        <a href="https://gamingandreim.github.io/Case-Study/" class="project-card-link group" target="_blank">
+          <div class="glass-card overflow-hidden rounded-3xl transition-all duration-400 h-full flex flex-col">
+            <div class="relative overflow-hidden rounded-t-3xl">
+              <img src="img/starkids.jfif" alt="Star Kids" class="project-img w-full h-64 object-cover">
+              <div class="overlay-glow"></div>
+            </div>
+            <div class="p-6 flex-grow">
+              <div class="flex justify-between items-start">
+                <h3 class="text-2xl font-bold group-hover:text-purple-300 transition">Star Kids</h3>
+                <i class="bi bi-box-arrow-up-right text-xl opacity-70 group-hover:opacity-100 transition"></i>
+              </div>
+              <p class="opacity-50">2023</p>
+              <p class="text-gray-300 text-sm mt-2">It is about encouraging the children to study and motivate them in different ways such as watching videos, music and different kinds of books.</p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="skill-badge text-xs">HTML</span>
+                <span class="skill-badge text-xs">CSS</span>
+                <span class="skill-badge text-xs">Javascript</span>
+                <span class="skill-badge text-xs">Bootstrap</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- PROJECT 2 - CLICKABLE CARD with Image (Internal link - same tab, no target="_blank") -->
+        <a href="capstone.html" class="project-card-link group">
+          <div class="glass-card overflow-hidden rounded-3xl transition-all duration-400 h-full flex flex-col">
+            <div class="relative overflow-hidden rounded-t-3xl">
+              <img src="img/Capstone.jfif" alt="Capstone Project" class="project-img w-full h-64 object-cover">
+              <div class="overlay-glow"></div>
+            </div>
+            <div class="p-6 flex-grow">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold group-hover:text-purple-300 transition">Capstone Project</h3>
+                    <i class="bi bi-arrow-right-circle text-xl opacity-70 group-hover:opacity-100 transition"></i>
+                </div>
+              <p class="opacity-50">2025</p>
+              <p class="text-gray-300 text-sm mt-2">
+                This project focuses on developing a Web-Based Record
+                Management and Dispatching System for Trucking Services to
+                improve financial and administrative operations.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="skill-badge text-xs">PHP</span>
+                <span class="skill-badge text-xs">Bootstrap 5</span>
+                <span class="skill-badge text-xs">HTML</span>
+                <span class="skill-badge text-xs">CSS</span>
+                <span class="skill-badge text-xs">Javascript</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills + Degree Highlight -->
+  <section id="skills" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-stretch">
+        <div class="glass-card p-8 rounded-3xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-5"><i class="bi bi-cpu text-3xl text-purple-400"></i><h3 class="text-3xl font-bold">Participations, Achievements & Certificates</h3></div>
+            <div class="space-y-5">
+              <div><div class="flex justify-between mb-1"><span>Logo Making Contest Participant</span><span>100%</span></div><div class="w-full bg-white/10 rounded-full h-2"><div class="bg-gradient-to-r from-purple-400 to-pink-500 h-2 rounded-full w-[100%]"></div></div></div>
+              <div><div class="flex justify-between mb-1"><span>Short Film Video Editing</span><span>100%</span></div><div class="w-full bg-white/10 rounded-full h-2"><div class="bg-gradient-to-r from-purple-400 to-pink-500 h-2 rounded-full w-[100%]"></div></div></div>
+              <div><div class="flex justify-between mb-1"><span>Completion of Certiport Examination</span><span>100%</span></div><div class="w-full bg-white/10 rounded-full h-2"><div class="bg-gradient-to-r from-purple-400 to-pink-500 h-2 rounded-full w-[100%]"></div></div></div>
+              <div><div class="flex justify-between mb-1"><span>Cisco Networking Academy</span><span>100%</span></div><div class="w-full bg-white/10 rounded-full h-2"><div class="bg-gradient-to-r from-purple-400 to-pink-500 h-2 rounded-full w-[100%]"></div></div></div>
+            </div>
+          </div>
+          <div class="mt-8 pt-5 border-t border-white/10">
+            <i class="bi bi-trophy-fill text-yellow-400"></i>
+            <span class="ml-2 text-sm">· Certified IT Specialist in HTML and CSS · Short Film Champion · </span>
+          </div>
+        </div>
+        <div class="glass-card p-8 rounded-3xl text-center flex flex-col items-center justify-center float-slow">
+          <i class="bi bi-mortarboard-heart text-6xl text-purple-300 mb-4"></i>
+          <h3 class="text-2xl font-bold">BSIT Graduate</h3>
+          <p class="text-gray-300 mt-3 px-2">Bachelor of Science in Information Technology — <span class="text-purple-300">Nueva Ecija University of Science and Technology</span> (2022-2026)</p>
+          <p class="text-sm text-gray-400 mt-4">Specialization: Web Systems Technology</p>
+          <div class="flex flex-wrap gap-2 justify-center mt-6"><span class="skill-badge">🌟 UI/UX Design</span><span class="skill-badge">✨ Video Editing</span><span class="skill-badge">⚡ Picture/Logo Editing</span><span class="skill-badge">⚡ Front-End</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax immersive break -->
+  <div class="relative w-full h-[320px] flex items-center justify-center my-8 overflow-hidden" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.5)), url('img/CICT.jfif'); background-attachment: fixed; background-size: cover; background-position: center;">
+    <div class="text-center z-10 px-4">
+      <h2 class="text-4xl md:text-5xl font-black tracking-wide drop-shadow-lg">“Every line of code is a step toward innovation”</h2>
+      <p class="text-purple-200 text-lg mt-3 font-light">Shaping future IT professionals one project at a time.</p>
+    </div>
+  </div>
+
+  <!-- DOWNLOAD CV SECTION - Pinalitan na ang Testimonials -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <i class="bi bi-file-person-fill text-5xl text-purple-400/70 mb-4"></i>
+      <div class="glass-card p-8 md:p-12 rounded-3xl">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="gradient-text">Download My CV</span></h2>
+        <p class="text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          Get to know more about my skills, experience, and educational background. Download my curriculum vitae below.
+        </p>
+        <div class="mt-8">
+          <a href="#" class="btn-primary px-10 py-4 rounded-full font-semibold inline-flex items-center gap-3 text-lg transition-all duration-300 hover:scale-105">
+            <i class="bi bi-download text-xl"></i> Download CV (PDF)
+          </a>
+        </div>
+        <p class="text-gray-400 text-sm mt-6">
+          <i class="bi bi-filetype-pdf text-red-400"></i> PDF format | Updated 2026
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="glass-card p-8 md:p-12 rounded-3xl">
+        <div class="grid md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="text-3xl font-bold">Start a <span class="gradient-text">conversation</span></h3>
+            <p class="text-gray-300 mt-3 leading-relaxed">Whether it's a collaboration, freelance project, or just tech talk — I'm always open to new challenges.</p>
+            <div class="mt-10 space-y-5">
+              <div class="flex items-center gap-4 glass-card p-3 rounded-2xl"><i class="bi bi-envelope-paper-fill text-purple-400 text-xl"></i><span>andreimendoza.neust@gmail.com</span></div>
+              <div class="flex items-center gap-4 glass-card p-3 rounded-2xl"><i class="bi bi-github text-xl"></i><span>/GamingAndreiM</span></div>
+              <div class="flex items-center gap-4 glass-card p-3 rounded-2xl"><i class="bi bi-linkedin text-xl"></i><span>linkedin.com/in/andreim-dev</span></div>
+            </div>
+            <div class="flex gap-5 mt-10">
+              <div class="bg-white/10 p-3 rounded-full hover:bg-purple-500/40 transition cursor-pointer"><i class="bi bi-twitter-x text-xl"></i></div>
+              <div class="bg-white/10 p-3 rounded-full hover:bg-purple-500/40 transition cursor-pointer"><i class="bi bi-instagram text-xl"></i></div>
+              <div class="bg-white/10 p-3 rounded-full hover:bg-purple-500/40 transition cursor-pointer"><i class="bi bi-dribbble text-xl"></i></div>
+            </div>
+          </div>
+          <div>
+            <form class="space-y-5">
+              <input type="text" placeholder="Full name" class="w-full bg-black/40 border border-white/20 rounded-xl p-3.5 focus:outline-none focus:border-purple-400 transition backdrop-blur-sm">
+              <input type="email" placeholder="Email address" class="w-full bg-black/40 border border-white/20 rounded-xl p-3.5 focus:outline-none focus:border-purple-400 transition">
+              <textarea rows="4" placeholder="Tell me about your idea..." class="w-full bg-black/40 border border-white/20 rounded-xl p-3.5 focus:outline-none focus:border-purple-400 resize-none"></textarea>
+              <button type="submit" class="btn-primary w-full py-3.5 rounded-xl font-bold text-white transition flex items-center justify-center gap-2"><i class="bi bi-send-fill"></i> Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-white/10 text-center text-gray-400 text-sm">
+    <div class="flex justify-center gap-8 flex-wrap">
+      <a href="#" class="hover:text-purple-300 transition">Style Guide</a>
+      <a href="#" class="hover:text-purple-300 transition">Credits</a>
+      <a href="#" class="hover:text-purple-300 transition">Resume</a>
+    </div>
+    <p class="mt-6">© 2025 Andrei Mendoza — BSIT | Web Portfolio</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(mobileBtn && mobileMenu){
+      mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      document.querySelectorAll('#mobileMenu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    }
+
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e){
+        const hash = this.getAttribute('href');
+        if(hash === "#" || hash === "") return;
+        const target = document.querySelector(hash);
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Mouse parallax effect for hero blobs
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth) * 20;
+      const y = (e.clientY / window.innerHeight) * 20;
+      const blobs = document.querySelectorAll('#home .absolute:not(.parallax-bg)');
+      if(blobs[0]) blobs[0].style.transform = `translate(${x * 0.3}px, ${y * 0.2}px)`;
+      if(blobs[1]) blobs[1].style.transform = `translate(${-x * 0.2}px, ${-y * 0.15}px)`;
+    });
+  </script>
+</body>
+</html>

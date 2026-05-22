@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Capstone Project | Web-Based Record Management & Dispatching System</title>
+  <!-- Tailwind CSS + Bootstrap Icons + Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body class="text-white">
+
+  <!-- MODAL for full-size image -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div class="modal-caption" id="modalCaption"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 w-[92%] md:w-auto md:min-w-[520px] max-w-5xl transition-all duration-300">
+    <div class="glass-card py-3 px-6 rounded-2xl flex justify-between items-center shadow-2xl">
+      <a href="index.html" class="text-2xl font-black tracking-tight"><span class="gradient-text">✦ ANDREI</span></a>
+      <div class="hidden md:flex gap-7 text-sm font-medium">
+        <a href="index.html#home" class="hover:text-purple-300 transition duration-300">Home</a>
+        <a href="index.html#work" class="hover:text-purple-300 transition duration-300">Works</a>
+        <a href="index.html#skills" class="hover:text-purple-300 transition duration-300">Skills</a>
+        <a href="index.html#contact" class="hover:text-purple-300 transition duration-300">Contact</a>
+      </div>
+      <i class="bi bi-list text-2xl md:hidden cursor-pointer" id="mobileMenuBtn"></i>
+    </div>
+    <div id="mobileMenu" class="glass-card mt-3 p-4 rounded-2xl flex flex-col gap-3 text-center md:hidden hidden backdrop-blur-xl">
+      <a href="index.html#home" class="py-2 hover:bg-white/10 rounded-xl">Home</a>
+      <a href="index.html#work" class="py-2 hover:bg-white/10 rounded-xl">Works</a>
+      <a href="index.html#skills" class="py-2 hover:bg-white/10 rounded-xl">Skills</a>
+      <a href="index.html#contact" class="py-2 hover:bg-white/10 rounded-xl">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Capstone Hero Section -->
+  <section class="min-h-[50vh] flex items-center justify-center relative px-6 pt-32 pb-16 overflow-hidden">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px] animate-pulse"></div>
+    <div class="absolute bottom-1/3 right-10 w-80 h-80 bg-pink-500/20 rounded-full blur-[110px] animate-pulse delay-700"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div class="glass-card px-5 py-2 rounded-full inline-flex items-center gap-2 mb-6 backdrop-blur-md">
+        <i class="bi bi-trophy-fill text-yellow-400 text-sm"></i>
+        <span class="text-xs font-mono tracking-wide">✦ CAPSTONE PROJECT 2025 ✦</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+        Web-Based Record Management & <span class="gradient-text">Dispatching System</span>
+      </h1>
+      <p class="text-gray-300 max-w-2xl mx-auto mt-6 text-lg">
+        for Trucking Services — Improving financial and administrative operations through digital transformation.
+      </p>
+      <div class="flex flex-wrap gap-3 justify-center mt-8">
+        <span class="skill-badge"><i class="bi bi-calendar3 me-1"></i> 2025</span>
+        <span class="skill-badge"><i class="bi bi-mortarboard"></i> Capstone Project</span>
+        <span class="skill-badge"><i class="bi bi-star-fill text-yellow-400"></i> Best IT Capstone Nominee</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content - Project Details -->
+  <section class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Project Image and Overview -->
+      <div class="grid md:grid-cols-2 gap-10 mb-16">
+        <div class="glass-card rounded-3xl overflow-hidden">
+          <img src="img/Capstone.jfif" alt="Capstone Project Dashboard" class="w-full h-full object-cover">
+        </div>
+        <div class="glass-card p-8 rounded-3xl">
+          <h2 class="text-2xl font-bold mb-4"><i class="bi bi-info-circle-fill text-purple-400 mr-2"></i> Project Overview</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            This project focuses on developing a <strong class="text-purple-300">Web-Based Record Management and Dispatching System</strong> for Trucking Services 
+            to improve financial and administrative operations. The system is designed to semi-automate salary invoicing, expense tracking, 
+            route optimization, and dispatch coordination, replacing outdated manual processes that contribute to inefficiencies and errors.
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            Built with modern web technologies, the system offers an intuitive interface for dispatchers, drivers, 
+            and administrators to manage loads, track deliveries, and generate status reports efficiently.
+          </p>
+          <div class="mt-6 pt-4 border-t border-white/10">
+            <div class="flex items-center gap-2 text-sm">
+              <i class="bi bi-check-circle-fill text-green-400"></i>
+              <span>Status: Completed & Deployed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Problem Statement & Objectives -->
+      <div class="grid md:grid-cols-2 gap-10 mb-16">
+        <div class="glass-card p-8 rounded-3xl">
+          <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="bi bi-exclamation-triangle-fill text-yellow-400"></i> Problem Statement</h3>
+          <p class="text-gray-300 leading-relaxed">
+            The Philippine Trucking Industry continues to face significant challenges due to its heavy reliance on outdated manual processes, particularly in financial and administrative 
+            operations. Many trucking companies still manage their invoicing through paper-based records or excel spreadsheets, requiring manual input for every trip
+          </p>
+        </div>
+        <div class="glass-card p-8 rounded-3xl">
+          <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="bi bi-bullseye text-purple-400"></i> Project Objectives</h3>
+          <ul class="space-y-2 text-gray-300">
+            <li class="flex items-start gap-2"><i class="bi bi-check2-circle text-purple-400 mt-1"></i> Automate dispatching and load assignment</li>
+            <li class="flex items-start gap-2"><i class="bi bi-check2-circle text-purple-400 mt-1"></i> Provide real-time record management for transactions</li>
+            <li class="flex items-start gap-2"><i class="bi bi-check2-circle text-purple-400 mt-1"></i> Generate automated Status reports and summaries</li>
+            <li class="flex items-start gap-2"><i class="bi bi-check2-circle text-purple-400 mt-1"></i> Improve communication between dispatchers and drivers</li>
+            <li class="flex items-start gap-2"><i class="bi bi-check2-circle text-purple-400 mt-1"></i> Reduce operational costs through digital transformation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Features Section -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold text-center mb-10"><span class="gradient-text">System Features</span></h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 transition duration-300">
+            <div class="feature-icon mx-auto mb-4"><i class="bi bi-truck"></i></div>
+            <h3 class="text-lg font-bold">Dispatching Module</h3>
+            <p class="text-gray-400 text-sm mt-2">Real-time load assignment and vehicle tracking for efficient dispatching operations.</p>
+          </div>
+          <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 transition duration-300">
+            <div class="feature-icon mx-auto mb-4"><i class="bi bi-file-text-fill"></i></div>
+            <h3 class="text-lg font-bold">Record Management</h3>
+            <p class="text-gray-400 text-sm mt-2">Centralized digital filing for all financial and administrative documents.</p>
+          </div>
+          <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 transition duration-300">
+            <div class="feature-icon mx-auto mb-4"><i class="bi bi-graph-up"></i></div>
+            <h3 class="text-lg font-bold">Status Reports</h3>
+            <p class="text-gray-400 text-sm mt-2">Automated generation of income, expense, and profit reports.</p>
+          </div>
+          <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 transition duration-300">
+            <div class="feature-icon mx-auto mb-4"><i class="bi bi-people-fill"></i></div>
+            <h3 class="text-lg font-bold">User Management</h3>
+            <p class="text-gray-400 text-sm mt-2">Role-based access for admins, dispatchers, and drivers.</p>
+          </div>
+          <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 transition duration-300">
+            <div class="feature-icon mx-auto mb-4"><i class="bi bi-bell-fill"></i></div>
+            <h3 class="text-lg font-bold">Notifications</h3>
+            <p class="text-gray-400 text-sm mt-2">Real-time alerts for dispatch updates and transaction status.</p>
+          </div>
+          <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 transition duration-300">
+            <div class="feature-icon mx-auto mb-4"><i class="bi bi-shield-lock-fill"></i></div>
+            <h3 class="text-lg font-bold">Secure Access</h3>
+            <p class="text-gray-400 text-sm mt-2">Encrypted login and secure data storage for sensitive information.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREENSHOTS SECTION - CLICKABLE IMAGES WITH MODAL -->
+      <div class="mb-16">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold"><span class="gradient-text">System Interfaces</span></h2>
+          <p class="text-gray-400 mt-2">I-click ang screenshot para palakihin</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          
+          <!-- Login Page -->
+          <div class="screenshot-card glass-card rounded-2xl overflow-hidden">
+            <div class="relative">
+              <img src="img/Capstone.jfif" alt="Login Page" class="w-full h-64 object-cover clickable-img" onclick="openModal(this.src, 'Login Page - User authentication interface')">
+              <div class="absolute top-3 left-3 glass-card px-3 py-1 rounded-full text-xs font-bold">
+                <i class="bi bi-box-arrow-in-right text-purple-400"></i> LOGIN PAGE
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">Login & Authentication Interface</h3>
+              <p class="text-gray-400 text-sm mt-1">Kung saan nagla-login ang mga users (Admin, Dispatcher, Driver) gamit ang kanilang credentials.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="skill-badge text-xs">Secure Login</span>
+                <span class="skill-badge text-xs">Role-Based Access</span>
+                <span class="skill-badge text-xs">Password Recovery</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Home -->
+          <div class="screenshot-card glass-card rounded-2xl overflow-hidden">
+            <div class="relative">
+              <img src="img/Dashboard.jfif" alt="Dashboard Home" class="w-full h-64 object-cover clickable-img" onclick="openModal(this.src, 'Dashboard / Home Page - Overview ng system activities at real-time statistics')">
+              <div class="absolute top-3 left-3 glass-card px-3 py-1 rounded-full text-xs font-bold">
+                <i class="bi bi-speedometer2 text-purple-400"></i> HOME / DASHBOARD
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">Dashboard / Home Page</h3>
+              <p class="text-gray-400 text-sm mt-1">Overview ng system activities, summary ng transactions, at real-time statistics ng operations.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="skill-badge text-xs">Analytics Cards</span>
+                <span class="skill-badge text-xs">Activity Logs</span>
+                <span class="skill-badge text-xs">Quick Stats</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Admin Dashboard -->
+          <div class="screenshot-card glass-card rounded-2xl overflow-hidden">
+            <div class="relative">
+              <img src="img/Admin Dashboard.jfif" alt="Admin Dashboard" class="w-full h-64 object-cover clickable-img" onclick="openModal(this.src, 'Admin Dashboard - Full control panel para sa system administrator')">
+              <div class="absolute top-3 left-3 glass-card px-3 py-1 rounded-full text-xs font-bold">
+                <i class="bi bi-shield-lock-fill text-red-400"></i> ADMIN DASHBOARD
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">Admin Dashboard</h3>
+              <p class="text-gray-400 text-sm mt-1">Full control panel para sa system administrator — user management, system settings, at overall oversight.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="skill-badge text-xs">User Management</span>
+                <span class="skill-badge text-xs">System Logs</span>
+                <span class="skill-badge text-xs">Backup/Restore</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dispatching Module -->
+          <div class="screenshot-card glass-card rounded-2xl overflow-hidden">
+            <div class="relative">
+              <img src="img/Truck Deployment.jfif" alt="Dispatching Module" class="w-full h-64 object-cover clickable-img" onclick="openModal(this.src, 'Dispatching Module - Pag-assign ng loads sa mga truck drivers at tracking ng delivery status')">
+              <div class="absolute top-3 left-3 glass-card px-3 py-1 rounded-full text-xs font-bold">
+                <i class="bi bi-truck text-blue-400"></i> DISPATCHING MODULE
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">Dispatching Module</h3>
+              <p class="text-gray-400 text-sm mt-1">Interface para sa pag-assign ng loads sa mga truck drivers, tracking ng delivery status, at scheduling.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="skill-badge text-xs">Load Assignment</span>
+                <span class="skill-badge text-xs">Driver Scheduling</span>
+                <span class="skill-badge text-xs">Real-time Tracking</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Record Management -->
+          <div class="screenshot-card glass-card rounded-2xl overflow-hidden">
+            <div class="relative">
+              <img src="img/Record Management.jfif" alt="Record Management" class="w-full h-64 object-cover clickable-img" onclick="openModal(this.src, 'Record Management - Centralized database ng lahat ng transactions at financial documents')">
+              <div class="absolute top-3 left-3 glass-card px-3 py-1 rounded-full text-xs font-bold">
+                <i class="bi bi-folder2-open text-green-400"></i> RECORD MANAGEMENT
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">Record Management</h3>
+              <p class="text-gray-400 text-sm mt-1">Centralized database ng lahat ng transactions, invoices, at financial documents ng trucking company.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="skill-badge text-xs">CRUD Operations</span>
+                <span class="skill-badge text-xs">Search & Filter</span>
+                <span class="skill-badge text-xs">Document Upload</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Status Reports -->
+          <div class="screenshot-card glass-card rounded-2xl overflow-hidden">
+            <div class="relative">
+              <img src="img/Status Report.jfif" alt="Status Reports" class="w-full h-64 object-cover clickable-img" onclick="openModal(this.src, 'Status Reports Module - Automated generation ng income statements at profit summaries')">
+              <div class="absolute top-3 left-3 glass-card px-3 py-1 rounded-full text-xs font-bold">
+                <i class="bi bi-graph-up text-yellow-400"></i> STATUS REPORTS
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">Status Reports Module</h3>
+              <p class="text-gray-400 text-sm mt-1">Automated generation ng income statements, expense reports, at profit summaries para sa management.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="skill-badge text-xs">PDF Export</span>
+                <span class="skill-badge text-xs">Date Filtering</span>
+                <span class="skill-badge text-xs">Documentation Image</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Driver Panel -->
+          <div class="screenshot-card glass-card rounded-2xl overflow-hidden">
+            <div class="relative">
+              <img src="img/Panel.jfif" alt="Driver Panel" class="w-full h-64 object-cover clickable-img" onclick="openModal(this.src, 'Driver Panel - Simplified interface para sa mga truck drivers')">
+              <div class="absolute top-3 left-3 glass-card px-3 py-1 rounded-full text-xs font-bold">
+                <i class="bi bi-person-badge text-cyan-400"></i> DRIVER PANEL
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">Driver Panel</h3>
+              <p class="text-gray-400 text-sm mt-1">Simplified interface para sa mga truck drivers — view assigned loads, update delivery status, at submit reports.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="skill-badge text-xs">My Loads</span>
+                <span class="skill-badge text-xs">Status Updates</span>
+                <span class="skill-badge text-xs">Trip Logs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Management -->
+          <div class="screenshot-card glass-card rounded-2xl overflow-hidden">
+            <div class="relative">
+              <img src="img/Management.jfif" alt="User Management" class="w-full h-64 object-cover clickable-img" onclick="openModal(this.src, 'User Management - Admin-only interface para sa user accounts')">
+              <div class="absolute top-3 left-3 glass-card px-3 py-1 rounded-full text-xs font-bold">
+                <i class="bi bi-people-fill text-purple-400"></i> USER MANAGEMENT
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">User Management</h3>
+              <p class="text-gray-400 text-sm mt-1">Admin-only interface para sa pag-add, edit, at pag-delete ng mga user accounts na may iba't ibang roles.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="skill-badge text-xs">Role Assignment</span>
+                <span class="skill-badge text-xs">Account Activation</span>
+                <span class="skill-badge text-xs">Activity Monitoring</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Technology Stack -->
+      <div class="glass-card p-8 rounded-3xl mb-16">
+        <h2 class="text-2xl font-bold text-center mb-6"><i class="bi bi-code-square text-purple-400 mr-2"></i> Technology Stack</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          <span class="skill-badge text-base"><i class="bi bi-filetype-php"></i> PHP</span>
+          <span class="skill-badge text-base"><i class="bi bi-database"></i> MySQL</span>
+          <span class="skill-badge text-base"><i class="bi bi-bootstrap-fill"></i> Bootstrap 5</span>
+          <span class="skill-badge text-base"><i class="bi bi-filetype-html"></i> HTML5</span>
+          <span class="skill-badge text-base"><i class="bi bi-filetype-css"></i> CSS3</span>
+          <span class="skill-badge text-base"><i class="bi bi-filetype-js"></i> JavaScript</span>
+          <span class="skill-badge text-base"><i class="bi bi-github"></i> Git/GitHub</span>
+          <span class="skill-badge text-base"><i class="bi bi-server"></i> XAMPP / Apache</span>
+        </div>
+      </div>
+
+      <!-- Development Team - APAT NA KAYO NGAYON -->
+      <div class="glass-card p-8 rounded-3xl mb-16">
+        <h2 class="text-2xl font-bold text-center mb-6"><i class="bi bi-people-fill text-purple-400 mr-2"></i> Development Team</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Member 1 -->
+          <div class="text-center">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-3"><i class="bi bi-person-fill text-3xl"></i></div>
+            <h4 class="font-bold">Andrei Mendoza</h4>
+            <p class="text-gray-400 text-sm">Front-End / Back-End</p>
+          </div>
+          <!-- Member 2 -->
+          <div class="text-center">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-3"><i class="bi bi-person-fill text-3xl"></i></div>
+            <h4 class="font-bold">Marc Ladores</h4>
+            <p class="text-gray-400 text-sm">Front-End / Back-End</p>
+          </div>
+          <!-- Member 3 -->
+          <div class="text-center">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-3"><i class="bi bi-person-fill text-3xl"></i></div>
+            <h4 class="font-bold">Levi Pangilinan</h4>
+            <p class="text-gray-400 text-sm">QA & Research Documentation</p>
+          </div>
+          <!-- Member 4 - BAGONG DAGDAG -->
+          <div class="text-center">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-3"><i class="bi bi-person-fill text-3xl"></i></div>
+            <h4 class="font-bold">Dale Amboya</h4>
+            <p class="text-gray-400 text-sm">QA & Research Documentation</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Adviser & School Info -->
+      <div class="grid md:grid-cols-2 gap-10 mb-16">
+        <div class="glass-card p-8 rounded-3xl text-center">
+          <i class="bi bi-person-video3 text-4xl text-purple-400 mb-3"></i>
+          <h3 class="text-xl font-bold">Project Adviser</h3>
+          <p class="text-gray-300 mt-2">Ma'am Ruth</p>
+          <p class="text-gray-400 text-sm">Capstone Adviser</p>
+        </div>
+        <div class="glass-card p-8 rounded-3xl text-center">
+          <i class="bi bi-building text-4xl text-purple-400 mb-3"></i>
+          <h3 class="text-xl font-bold">Institution</h3>
+          <p class="text-gray-300 mt-2">Nueva Ecija University of Science and Technology</p>
+          <p class="text-gray-400 text-sm">College of Information and Communication Technology</p>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center py-8">
+        <a href="index.html" class="btn-primary px-8 py-3.5 rounded-full font-semibold inline-flex items-center gap-2">
+          <i class="bi bi-arrow-left"></i> Back to Portfolio
+        </a>
+        <a href="https://github.com/GamingAndreiM" target="_blank" class="glass-card px-8 py-3.5 rounded-full font-medium inline-flex items-center gap-2 ml-4 border border-white/20 hover:bg-white/10 transition">
+          <i class="bi bi-github"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-white/10 text-center text-gray-400 text-sm">
+    <div class="flex justify-center gap-8 flex-wrap">
+      <a href="index.html#home" class="hover:text-purple-300 transition">Home</a>
+      <a href="index.html#work" class="hover:text-purple-300 transition">Works</a>
+      <a href="index.html#contact" class="hover:text-purple-300 transition">Contact</a>
+    </div>
+    <p class="mt-6">© 2025 Andrei Mendoza — BSIT | Capstone Project: Web-Based Record Management & Dispatching System for Trucking Services</p>
+  </footer>
+
+  <!-- JavaScript for Mobile Menu & Modal -->
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(mobileBtn && mobileMenu){
+      mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      document.querySelectorAll('#mobileMenu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e){
+        const hash = this.getAttribute('href');
+        if(hash === "#" || hash === "") return;
+        const target = document.querySelector(hash);
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // MODAL FUNCTIONS for clickable images
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalCaption = document.getElementById('modalCaption');
+
+    function openModal(imgSrc, caption) {
+      modal.classList.add('active');
+      modalImg.src = imgSrc;
+      modalCaption.textContent = caption || 'System Interface Screenshot';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
