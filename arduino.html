@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Arduino Project | Automatic Fan using Ultrasonic Sensor</title>
+  <!-- Tailwind CSS + Bootstrap Icons + Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Additional responsive fixes for arduino page */
+    @media (max-width: 768px) {
+      .modal-content {
+        max-width: 95%;
+        max-height: 85%;
+      }
+      pre {
+        font-size: 0.7rem;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .skill-badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.8rem;
+      }
+      .feature-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+      h1 {
+        font-size: 2rem !important;
+      }
+      h2 {
+        font-size: 1.5rem !important;
+      }
+    }
+    @media (max-width: 480px) {
+      pre {
+        font-size: 0.6rem;
+      }
+      .glass-card {
+        padding: 1rem !important;
+      }
+    }
+    /* Better text wrapping for code */
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    /* Video responsive */
+    video {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+    }
+  </style>
+</head>
+<body class="text-white">
+
+  <!-- MODAL for full-size image -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div class="modal-caption" id="modalCaption"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 w-[92%] md:w-auto md:min-w-[520px] max-w-5xl transition-all duration-300">
+    <div class="glass-card py-3 px-6 rounded-2xl flex justify-between items-center shadow-2xl">
+      <a href="index.html" class="text-2xl font-black tracking-tight"><span class="gradient-text">✦ ANDREI</span></a>
+      <div class="hidden md:flex gap-7 text-sm font-medium">
+        <a href="index.html#home" class="hover:text-purple-300 transition duration-300">Home</a>
+        <a href="index.html#work" class="hover:text-purple-300 transition duration-300">Works</a>
+        <a href="index.html#skills" class="hover:text-purple-300 transition duration-300">Skills</a>
+        <a href="index.html#contact" class="hover:text-purple-300 transition duration-300">Contact</a>
+      </div>
+      <i class="bi bi-list text-2xl md:hidden cursor-pointer" id="mobileMenuBtn"></i>
+    </div>
+    <div id="mobileMenu" class="glass-card mt-3 p-4 rounded-2xl flex flex-col gap-3 text-center md:hidden hidden backdrop-blur-xl">
+      <a href="index.html#home" class="py-2 hover:bg-white/10 rounded-xl">Home</a>
+      <a href="index.html#work" class="py-2 hover:bg-white/10 rounded-xl">Works</a>
+      <a href="index.html#skills" class="py-2 hover:bg-white/10 rounded-xl">Skills</a>
+      <a href="index.html#contact" class="py-2 hover:bg-white/10 rounded-xl">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Arduino Project Hero Section -->
+  <section class="min-h-[50vh] flex items-center justify-center relative px-6 pt-32 pb-16 overflow-hidden">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px] animate-pulse"></div>
+    <div class="absolute bottom-1/3 right-10 w-80 h-80 bg-pink-500/20 rounded-full blur-[110px] animate-pulse delay-700"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div class="glass-card px-5 py-2 rounded-full inline-flex items-center gap-2 mb-6 backdrop-blur-md">
+        <i class="bi bi-motherboard-fill text-cyan-400 text-sm"></i>
+        <span class="text-xs font-mono tracking-wide">✦ ARDUINO PROJECT 2024 ✦</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+        Automatic Fan using <span class="gradient-text">Ultrasonic Sensor</span>
+      </h1>
+      <p class="text-gray-300 max-w-2xl mx-auto mt-6 text-lg">
+        with Arduino Uno — A smart fan that automatically turns on/off based on human presence detection.
+      </p>
+      <div class="flex flex-wrap gap-3 justify-center mt-8">
+        <span class="skill-badge"><i class="bi bi-calendar3 me-1"></i> 2024</span>
+        <span class="skill-badge"><i class="bi bi-microchip"></i> Arduino Uno</span>
+        <span class="skill-badge"><i class="bi bi-star-fill text-yellow-400"></i> IoT Project</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content - Project Details -->
+  <section class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Project Image and Overview -->
+      <div class="grid md:grid-cols-2 gap-10 mb-16">
+        <div class="glass-card rounded-3xl overflow-hidden">
+          <img src="img/efan.png" alt="Arduino Setup" class="w-full h-full object-cover">
+        </div>
+        <div class="glass-card p-8 rounded-3xl">
+          <h2 class="text-2xl font-bold mb-4"><i class="bi bi-info-circle-fill text-purple-400 mr-2"></i> Project Overview</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            This project is an <strong class="text-purple-300">Automatic Fan System</strong> that uses an <strong class="text-cyan-400">Arduino Uno</strong> microcontroller 
+            and an <strong class="text-cyan-400">Ultrasonic Sensor (HC-SR04)</strong> to detect human presence. When a person is detected within a certain distance, 
+            the fan automatically turns ON. When no presence is detected, the fan turns OFF — promoting energy efficiency and convenience.
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            This is a practical application of embedded systems and IoT concepts, demonstrating how sensors can automate everyday appliances 
+            to save electricity and improve user experience.
+          </p>
+          <div class="mt-6 pt-4 border-t border-white/10">
+            <div class="flex items-center gap-2 text-sm">
+              <i class="bi bi-check-circle-fill text-green-400"></i>
+              <span>Status: Completed & Tested</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How It Works & Components -->
+      <div class="grid md:grid-cols-2 gap-10 mb-16">
+        <div class="glass-card p-8 rounded-3xl">
+          <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="bi bi-gear-fill text-yellow-400"></i> How It Works</h3>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-start gap-2"><i class="bi bi-arrow-right-circle text-purple-400 mt-1"></i> Ultrasonic sensor emits sound waves and measures distance</li>
+            <li class="flex items-start gap-2"><i class="bi bi-arrow-right-circle text-purple-400 mt-1"></i> If distance is less than threshold (e.g., 50cm), person is detected</li>
+            <li class="flex items-start gap-2"><i class="bi bi-arrow-right-circle text-purple-400 mt-1"></i> Arduino sends signal to relay module to turn ON the fan</li>
+            <li class="flex items-start gap-2"><i class="bi bi-arrow-right-circle text-purple-400 mt-1"></i> If no person detected for a few seconds, fan automatically turns OFF</li>
+            <li class="flex items-start gap-2"><i class="bi bi-arrow-right-circle text-purple-400 mt-1"></i> LED indicator shows when fan is active</li>
+          </ul>
+        </div>
+        <div class="glass-card p-8 rounded-3xl">
+          <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="bi bi-puzzle-fill text-purple-400"></i> Components Used</h3>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="skill-badge"><i class="bi bi-motherboard"></i> Arduino Uno</span>
+            <span class="skill-badge"><i class="bi bi-rulers"></i> HC-SR04 Ultrasonic Sensor</span>
+            <span class="skill-badge"><i class="bi bi-lightning-charge"></i> Relay Module</span>
+            <span class="skill-badge"><i class="bi bi-fan"></i> Electric Fan (220V)</span>
+            <span class="skill-badge"><i class="bi bi-led"></i> LED Indicator</span>
+            <span class="skill-badge"><i class="bi bi-resistor"></i> Resistors & Jumper Wires</span>
+            <span class="skill-badge"><i class="bi bi-battery"></i> Power Supply</span>
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/10">
+            <p class="text-sm text-gray-400"><i class="bi bi-code-slash"></i> Arduino IDE (C++)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Section -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold text-center mb-10"><span class="gradient-text">Key Features</span></h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 transition duration-300">
+            <div class="feature-icon mx-auto mb-4"><i class="bi bi-person-walking"></i></div>
+            <h3 class="text-lg font-bold">Automatic Detection</h3>
+            <p class="text-gray-400 text-sm mt-2">Detects human presence using ultrasonic sensor technology.</p>
+          </div>
+          <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 transition duration-300">
+            <div class="feature-icon mx-auto mb-4"><i class="bi bi-lightbulb"></i></div>
+            <h3 class="text-lg font-bold">Energy Saving</h3>
+            <p class="text-gray-400 text-sm mt-2">Automatically turns off when no one is around to save electricity.</p>
+          </div>
+          <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 transition duration-300">
+            <div class="feature-icon mx-auto mb-4"><i class="bi bi-sliders2"></i></div>
+            <h3 class="text-lg font-bold">Adjustable Range</h3>
+            <p class="text-gray-400 text-sm mt-2">Detection distance can be adjusted via code (e.g., 30cm to 100cm).</p>
+          </div>
+          <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 transition duration-300">
+            <div class="feature-icon mx-auto mb-4"><i class="bi bi-broadcast"></i></div>
+            <h3 class="text-lg font-bold">Real-time Response</h3>
+            <p class="text-gray-400 text-sm mt-2">Instant ON/OFF response when presence is detected or lost.</p>
+          </div>
+          <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 transition duration-300">
+            <div class="feature-icon mx-auto mb-4"><i class="bi bi-led-on"></i></div>
+            <h3 class="text-lg font-bold">Visual Indicator</h3>
+            <p class="text-gray-400 text-sm mt-2">LED indicator shows current fan status (ON/OFF).</p>
+          </div>
+          <div class="glass-card p-6 rounded-2xl text-center hover:scale-105 transition duration-300">
+            <div class="feature-icon mx-auto mb-4"><i class="bi bi-shield-check"></i></div>
+            <h3 class="text-lg font-bold">Relay Protection</h3>
+            <p class="text-gray-400 text-sm mt-2">Relay module ensures safe switching of high-voltage fan.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREENSHOTS & VIDEO SECTION -->
+      <div class="mb-16">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold"><span class="gradient-text">Project Gallery</span></h2>
+          <p class="text-gray-400 mt-2">Click the pictures to zoom | Watch the test video</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          
+          <!-- PICTURE 1 - Setup / Wiring -->
+          <div class="screenshot-card glass-card rounded-2xl overflow-hidden">
+            <div class="relative">
+              <img src="img/arduino.jpg" alt="Arduino Wiring Setup" class="w-full h-64 object-cover clickable-img" onclick="openModal(this.src, 'Arduino Uno Wiring Setup')">
+              <div class="absolute top-3 left-3 glass-card px-3 py-1 rounded-full text-xs font-bold">
+                <i class="bi bi-motherboard text-purple-400"></i> WIRING SETUP
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">Arduino Uno & Sensor Wiring</h3>
+              <p class="text-gray-400 text-sm mt-1">Complete circuit showing connections between Arduino Uno, Ultrasonic Sensor (HC-SR04), Relay Module, and Fan.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="skill-badge text-xs">Arduino Uno</span>
+                <span class="skill-badge text-xs">HC-SR04</span>
+                <span class="skill-badge text-xs">Relay Module</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PICTURE 2 - Finished Project -->
+          <div class="screenshot-card glass-card rounded-2xl overflow-hidden">
+            <div class="relative">
+              <img src="img/presentation.jpg" alt="Finished Project" class="w-full h-64 object-cover clickable-img" onclick="openModal(this.src, 'Complete Automatic Fan Setup')">
+              <div class="absolute top-3 left-3 glass-card px-3 py-1 rounded-full text-xs font-bold">
+                <i class="bi bi-check-circle text-green-400"></i> FINISHED PROJECT
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">Complete Project Assembly</h3>
+              <p class="text-gray-400 text-sm mt-1">The fully assembled automatic fan system — ready for testing and deployment.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="skill-badge text-xs">Electric Fan</span>
+                <span class="skill-badge text-xs">Arduino Enclosure</span>
+                <span class="skill-badge text-xs">Power Supply</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIDEO - Testing -->
+          <div class="screenshot-card glass-card rounded-2xl overflow-hidden md:col-span-2">
+            <div class="relative">
+              <video class="w-full h-auto max-h-[400px] object-cover" controls poster="img/arduino2.jpg">
+                <source src="clip/testing.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="absolute top-3 left-3 glass-card px-3 py-1 rounded-full text-xs font-bold">
+                <i class="bi bi-play-circle-fill text-red-400"></i> TESTING VIDEO
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-bold">Project Testing & Demo</h3>
+              <p class="text-gray-400 text-sm mt-1">Watch the automatic fan in action — detecting human presence and turning ON/OFF automatically.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="skill-badge text-xs">Functionality Test</span>
+                <span class="skill-badge text-xs">Distance Calibration</span>
+                <span class="skill-badge text-xs">Real-time Response</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Arduino Code Snippet -->
+      <div class="glass-card p-8 rounded-3xl mb-16">
+        <h2 class="text-2xl font-bold text-center mb-6"><i class="bi bi-code-square text-purple-400 mr-2"></i> Arduino Code (C++)</h2>
+        <div class="bg-black/50 rounded-2xl p-5 overflow-x-auto">
+          <pre class="text-sm text-green-300 font-mono leading-relaxed whitespace-pre-wrap">
+<span class="text-gray-500">// Automatic Fan using Ultrasonic Sensor with Arduino Uno</span>
+
+<span class="text-blue-400">#define</span> TRIG_PIN 9
+<span class="text-blue-400">#define</span> ECHO_PIN 10
+<span class="text-blue-400">#define</span> RELAY_PIN 7
+<span class="text-blue-400">#define</span> LED_PIN 13
+
+<span class="text-blue-400">#define</span> DISTANCE_THRESHOLD 50  // in cm
+
+<span class="text-blue-400">void</span> <span class="text-yellow-400">setup</span>() {
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+  pinMode(RELAY_PIN, OUTPUT);
+  pinMode(LED_PIN, OUTPUT);
+  
+  digitalWrite(RELAY_PIN, LOW);  // Fan OFF initially
+  digitalWrite(LED_PIN, LOW);
+  
+  Serial.begin(9600);
+}
+
+<span class="text-blue-400">void</span> <span class="text-yellow-400">loop</span>() {
+  <span class="text-gray-500">// Send ultrasonic pulse</span>
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+  
+  <span class="text-gray-500">// Measure echo duration</span>
+  long duration = pulseIn(ECHO_PIN, HIGH);
+  int distance = duration * 0.034 / 2;
+  
+  Serial.print(<span class="text-green-300">"Distance: "</span>);
+  Serial.print(distance);
+  Serial.println(<span class="text-green-300">" cm"</span>);
+  
+  <span class="text-gray-500">// Check if person is within range</span>
+  <span class="text-blue-400">if</span> (distance > 0 && distance < DISTANCE_THRESHOLD) {
+    digitalWrite(RELAY_PIN, HIGH);  // Turn FAN ON
+    digitalWrite(LED_PIN, HIGH);     // LED ON
+    Serial.println(<span class="text-green-300">"Person detected - FAN ON"</span>);
+  } <span class="text-blue-400">else</span> {
+    digitalWrite(RELAY_PIN, LOW);    // Turn FAN OFF
+    digitalWrite(LED_PIN, LOW);      // LED OFF
+    Serial.println(<span class="text-green-300">"No person - FAN OFF"</span>);
+  }
+  
+  delay(500);  // Small delay for stability
+}
+          </pre>
+        </div>
+        <p class="text-gray-400 text-sm text-center mt-4">
+          <i class="bi bi-info-circle"></i> Code uploaded via Arduino IDE | Adjust DISTANCE_THRESHOLD as needed
+        </p>
+      </div>
+
+      <!-- Technology Stack -->
+      <div class="glass-card p-8 rounded-3xl mb-16">
+        <h2 class="text-2xl font-bold text-center mb-6"><i class="bi bi-tools text-purple-400 mr-2"></i> Tools & Technologies</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          <span class="skill-badge text-base"><i class="bi bi-motherboard"></i> Arduino Uno</span>
+          <span class="skill-badge text-base"><i class="bi bi-code-slash"></i> Arduino IDE (C++)</span>
+          <span class="skill-badge text-base"><i class="bi bi-rulers"></i> HC-SR04 Sensor</span>
+          <span class="skill-badge text-base"><i class="bi bi-lightning-charge"></i> Relay Module</span>
+          <span class="skill-badge text-base"><i class="bi bi-fan"></i> Electric Fan</span>
+          <span class="skill-badge text-base"><i class="bi bi-usb"></i> USB Cable</span>
+          <span class="skill-badge text-base"><i class="bi bi-battery"></i> Power Supply (5V/12V)</span>
+        </div>
+      </div>
+
+      <!-- Project Adviser & School Info -->
+      <div class="grid md:grid-cols-2 gap-10 mb-16">
+        <div class="glass-card p-8 rounded-3xl text-center">
+          <i class="bi bi-person-video3 text-4xl text-purple-400 mb-3"></i>
+          <h3 class="text-xl font-bold">Project Instructor</h3>
+          <p class="text-gray-300 mt-2">Sir Bulaklak</p>
+          <p class="text-gray-400 text-sm">Arduino & IoT Adviser</p>
+        </div>
+        <div class="glass-card p-8 rounded-3xl text-center">
+          <i class="bi bi-building text-4xl text-purple-400 mb-3"></i>
+          <h3 class="text-xl font-bold">Institution</h3>
+          <p class="text-gray-300 mt-2">Nueva Ecija University of Science and Technology</p>
+          <p class="text-gray-400 text-sm">College of Information and Communication Technology</p>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center py-8">
+        <a href="index.html" class="btn-primary px-8 py-3.5 rounded-full font-semibold inline-flex items-center gap-2">
+          <i class="bi bi-arrow-left"></i> Back to Portfolio
+        </a>
+        <a href="https://github.com/GamingAndreiM" target="_blank" class="glass-card px-8 py-3.5 rounded-full font-medium inline-flex items-center gap-2 ml-4 border border-white/20 hover:bg-white/10 transition">
+          <i class="bi bi-github"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-white/10 text-center text-gray-400 text-sm">
+    <div class="flex justify-center gap-8 flex-wrap">
+      <a href="index.html#home" class="hover:text-purple-300 transition">Home</a>
+      <a href="index.html#work" class="hover:text-purple-300 transition">Works</a>
+      <a href="index.html#contact" class="hover:text-purple-300 transition">Contact</a>
+    </div>
+    <p class="mt-6">© 2024 Andrei Mendoza — BSIT | Arduino Project: Automatic Fan using Ultrasonic Sensor</p>
+  </footer>
+
+  <!-- JavaScript for Mobile Menu & Modal -->
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(mobileBtn && mobileMenu){
+      mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      document.querySelectorAll('#mobileMenu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e){
+        const hash = this.getAttribute('href');
+        if(hash === "#" || hash === "") return;
+        const target = document.querySelector(hash);
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // MODAL FUNCTIONS for clickable images
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalCaption = document.getElementById('modalCaption');
+
+    function openModal(imgSrc, caption) {
+      modal.classList.add('active');
+      modalImg.src = imgSrc;
+      modalCaption.textContent = caption || 'Project Image';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>

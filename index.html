@@ -39,7 +39,7 @@
     <div class="absolute bottom-1/3 right-10 w-80 h-80 bg-pink-500/20 rounded-full blur-[110px] animate-pulse delay-700"></div>
     <div class="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
       
-      <!-- PROFILE PICTURE - nakalagay sa itaas ng pangalan -->
+      <!-- PROFILE PICTURE -->
       <div class="mb-6">
         <img src="img/avatar.jfif" alt="Andrei Mendoza Profile" class="profile-img">
       </div>
@@ -72,69 +72,90 @@
     </div>
   </section>
 
-  <!-- WORKS Section - 2 CLICKABLE PROJECTS only with IMAGES -->
+  <!-- WORKS Section - 3 CLICKABLE PROJECTS -->
   <section id="work" class="py-28 px-6 relative">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/5 to-transparent"></div>
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
         <span class="skill-badge text-purple-300 border-purple-500/30">✦ featured projects</span>
         <h2 class="text-4xl md:text-5xl font-bold mt-5">Immersive <span class="gradient-text">Projects</span></h2>
-        <p class="text-gray-400 max-w-2xl mx-auto mt-3">Click any project card to view details — each image is fully customizable</p>
+        <p class="text-gray-400 max-w-2xl mx-auto mt-3">Click any project card to view details</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         
-        <!-- PROJECT 1 - CLICKABLE CARD with Image (External link - opens new tab) -->
+        <!-- PROJECT 1 - Star Kids (External link - opens new tab) -->
         <a href="https://gamingandreim.github.io/Case-Study/" class="project-card-link group" target="_blank">
           <div class="glass-card overflow-hidden rounded-3xl transition-all duration-400 h-full flex flex-col">
             <div class="relative overflow-hidden rounded-t-3xl">
-              <img src="img/starkids.jfif" alt="Star Kids" class="project-img w-full h-64 object-cover">
+              <img src="img/starkids.jfif" alt="Star Kids" class="project-img w-full h-56 object-cover">
               <div class="overlay-glow"></div>
             </div>
-            <div class="p-6 flex-grow">
+            <div class="p-5 flex-grow">
               <div class="flex justify-between items-start">
-                <h3 class="text-2xl font-bold group-hover:text-purple-300 transition">Star Kids</h3>
-                <i class="bi bi-box-arrow-up-right text-xl opacity-70 group-hover:opacity-100 transition"></i>
+                <h3 class="text-xl font-bold group-hover:text-purple-300 transition">Star Kids</h3>
+                <i class="bi bi-box-arrow-up-right text-lg opacity-70 group-hover:opacity-100 transition"></i>
               </div>
-              <p class="opacity-50">2023</p>
-              <p class="text-gray-300 text-sm mt-2">It is about encouraging the children to study and motivate them in different ways such as watching videos, music and different kinds of books.</p>
-              <div class="flex flex-wrap gap-2 mt-4">
+              <p class="opacity-50 text-sm">2023</p>
+              <p class="text-gray-300 text-sm mt-2 line-clamp-3">Encouraging children to study and motivate them through videos, music, and books.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
                 <span class="skill-badge text-xs">HTML</span>
                 <span class="skill-badge text-xs">CSS</span>
-                <span class="skill-badge text-xs">Javascript</span>
+                <span class="skill-badge text-xs">JavaScript</span>
                 <span class="skill-badge text-xs">Bootstrap</span>
               </div>
             </div>
           </div>
         </a>
 
-        <!-- PROJECT 2 - CLICKABLE CARD with Image (Internal link - same tab, no target="_blank") -->
+        <!-- PROJECT 2 - Capstone Project (Internal link - same tab) -->
         <a href="capstone.html" class="project-card-link group">
           <div class="glass-card overflow-hidden rounded-3xl transition-all duration-400 h-full flex flex-col">
             <div class="relative overflow-hidden rounded-t-3xl">
-              <img src="img/Capstone.jfif" alt="Capstone Project" class="project-img w-full h-64 object-cover">
+              <img src="img/Capstone.jfif" alt="Capstone Project" class="project-img w-full h-56 object-cover">
               <div class="overlay-glow"></div>
             </div>
-            <div class="p-6 flex-grow">
-                <div class="flex justify-between items-start">
-                    <h3 class="text-2xl font-bold group-hover:text-purple-300 transition">Capstone Project</h3>
-                    <i class="bi bi-arrow-right-circle text-xl opacity-70 group-hover:opacity-100 transition"></i>
-                </div>
-              <p class="opacity-50">2025</p>
-              <p class="text-gray-300 text-sm mt-2">
-                This project focuses on developing a Web-Based Record
-                Management and Dispatching System for Trucking Services to
-                improve financial and administrative operations.
-              </p>
-              <div class="flex flex-wrap gap-2 mt-4">
+            <div class="p-5 flex-grow">
+              <div class="flex justify-between items-start">
+                <h3 class="text-xl font-bold group-hover:text-purple-300 transition">Capstone Project</h3>
+                <i class="bi bi-arrow-right-circle text-lg opacity-70 group-hover:opacity-100 transition"></i>
+              </div>
+              <p class="opacity-50 text-sm">2025</p>
+              <p class="text-gray-300 text-sm mt-2 line-clamp-3">Web-Based Record Management and Dispatching System for Trucking Services.</p>
+              <div class="flex flex-wrap gap-2 mt-3">
                 <span class="skill-badge text-xs">PHP</span>
+                <span class="skill-badge text-xs">MySQL</span>
                 <span class="skill-badge text-xs">Bootstrap 5</span>
-                <span class="skill-badge text-xs">HTML</span>
-                <span class="skill-badge text-xs">CSS</span>
-                <span class="skill-badge text-xs">Javascript</span>
+                <span class="skill-badge text-xs">JavaScript</span>
               </div>
             </div>
           </div>
         </a>
+
+        <!-- PROJECT 3 - Arduino Project (Internal link - same tab, NO target="_blank") -->
+        <a href="arduino.html" class="project-card-link group">
+          <div class="glass-card overflow-hidden rounded-3xl transition-all duration-400 h-full flex flex-col">
+            <div class="relative overflow-hidden rounded-t-3xl">
+              <img src="img/efan.png" alt="Arduino Project" class="project-img w-full h-56 object-cover">
+              <div class="overlay-glow"></div>
+            </div>
+            <div class="p-5 flex-grow">
+              <div class="flex justify-between items-start">
+                <h3 class="text-xl font-bold group-hover:text-purple-300 transition">Automatic Fan using Ultrasonic Sensor</h3>
+                <i class="bi bi-arrow-right-circle text-lg opacity-70 group-hover:opacity-100 transition"></i>
+              </div>
+              <p class="opacity-50 text-sm">2024</p>
+              <p class="text-gray-300 text-sm mt-2 line-clamp-3">
+                System is designed to automatically turn on the electric fan when a person or object is detected within a specific distance from the sensor.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="skill-badge text-xs">Arduino IDE</span>
+                <span class="skill-badge text-xs">C++</span>
+                <span class="skill-badge text-xs">Ultrasonic Sensor</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
@@ -177,7 +198,7 @@
     </div>
   </div>
 
-  <!-- DOWNLOAD CV SECTION - Pinalitan na ang Testimonials -->
+  <!-- DOWNLOAD CV SECTION -->
   <section class="py-20 px-6">
     <div class="max-w-4xl mx-auto text-center">
       <i class="bi bi-file-person-fill text-5xl text-purple-400/70 mb-4"></i>
@@ -187,7 +208,7 @@
           Get to know more about my skills, experience, and educational background. Download my curriculum vitae below.
         </p>
         <div class="mt-8">
-          <a href="#" class="btn-primary px-10 py-4 rounded-full font-semibold inline-flex items-center gap-3 text-lg transition-all duration-300 hover:scale-105">
+          <a href="https://export-download.canva.com/zlreQ/DAHKXTzlreQ/332/0-2905325770589921485.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260521%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260521T204656Z&X-Amz-Expires=66469&X-Amz-Signature=073ce0644738898b15feb4964ad32c3bed72dcbca74d9036df2cef0d5cf38761&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27Professional%2520CV%2520Resume.pdf&response-expires=Fri%2C%2022%20May%202026%2015%3A14%3A45%20GMT" class="btn-primary px-10 py-4 rounded-full font-semibold inline-flex items-center gap-3 text-lg transition-all duration-300 hover:scale-105">
             <i class="bi bi-download text-xl"></i> Download CV (PDF)
           </a>
         </div>
