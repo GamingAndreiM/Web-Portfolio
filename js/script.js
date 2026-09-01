@@ -66,7 +66,7 @@ function openVideoModal(videoSrc, posterImg, title, desc, tools, tag, tagIcon, i
             iframe.style.border = 'none';
             videoContainer.appendChild(iframe);
             
-            // Hide overlay for YouTube (auto-play handled by iframe)
+            // Hide overlay for YouTube
             if (overlay) {
                 overlay.style.display = 'none';
                 overlay.style.opacity = '0';
@@ -76,7 +76,7 @@ function openVideoModal(videoSrc, posterImg, title, desc, tools, tag, tagIcon, i
             
             console.log('YouTube embed loaded!');
         } else {
-            // Local video file (fallback)
+            // Local video file
             const video = document.createElement('video');
             video.controls = true;
             video.style.width = '100%';
@@ -153,17 +153,13 @@ function playModalVideo() {
         return;
     }
     
-    // Check if there's a video element
     const video = videoContainer.querySelector('video');
     
     if (video) {
         console.log('Attempting to play local video...');
-        
-        // SHOW video controls
         video.controls = true;
         video.style.display = 'block';
         
-        // HIDE overlay immediately
         if (overlay) {
             overlay.style.display = 'none';
             overlay.style.opacity = '0';
@@ -189,7 +185,7 @@ function playModalVideo() {
             });
         }
     } else {
-        console.log('No video element found (YouTube embed detected or no video)');
+        console.log('No video element found (YouTube embed detected)');
     }
 }
 
@@ -225,11 +221,19 @@ function openModal(imgSrc, title, desc, tools, tag, tagIcon) {
         wrapper.classList.remove('active');
     }
     
-    // SHOW image wrapper and image - ITO ANG IMPORTANTE
+    // FORCE SHOW image wrapper with direct styles
     if (imageWrapper) {
-        imageWrapper.style.display = 'flex !important';
-        imageWrapper.style.flex = '1';
+        imageWrapper.style.display = 'flex';
+        imageWrapper.style.alignItems = 'center';
+        imageWrapper.style.justifyContent = 'center';
+        imageWrapper.style.width = '100%';
+        imageWrapper.style.height = '450px';
+        imageWrapper.style.background = 'rgba(0, 0, 0, 0.3)';
+        imageWrapper.style.overflow = 'hidden';
+        console.log('Image wrapper shown');
     }
+    
+    // FORCE SHOW image with direct styles
     if (modalImg) {
         modalImg.style.display = 'block';
         modalImg.src = imgSrc || '';
@@ -237,7 +241,9 @@ function openModal(imgSrc, title, desc, tools, tag, tagIcon) {
         modalImg.style.height = '100%';
         modalImg.style.objectFit = 'contain';
         modalImg.style.padding = '1rem';
+        modalImg.style.background = 'transparent';
         console.log('Image set to:', modalImg.src);
+        console.log('Image display:', modalImg.style.display);
     }
     
     // Reset overlay
@@ -249,7 +255,7 @@ function openModal(imgSrc, title, desc, tools, tag, tagIcon) {
         overlay.innerHTML = '<i class="bi bi-play-circle-fill"></i>';
     }
     
-    // Set content - TITLE, DESCRIPTION, TOOLS
+    // Set content
     if (modalTitle) modalTitle.textContent = title || 'Untitled';
     if (modalDesc) modalDesc.textContent = desc || 'No description available.';
     if (modalTag) modalTag.innerHTML = `<i class="bi ${tagIcon || 'bi-image'}"></i> ${tag || 'Graphics'}`;
@@ -299,7 +305,7 @@ function closeModal() {
             wrapper.classList.remove('active');
         }
         
-        // Show image wrapper
+        // Show image wrapper with image
         if (imageWrapper) {
             imageWrapper.style.display = 'flex';
         }

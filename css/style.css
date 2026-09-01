@@ -612,7 +612,7 @@ body {
     border-color: rgba(168, 85, 247, 0.4) !important;
 }
 
-/* Image wrapper */
+/* Image wrapper - FORCE DISPLAY */
 .media-modal-img-wrapper {
     width: 100% !important;
     height: 450px !important;
