@@ -225,13 +225,18 @@ function openModal(imgSrc, title, desc, tools, tag, tagIcon) {
         wrapper.classList.remove('active');
     }
     
-    // SHOW image wrapper and image
+    // SHOW image wrapper and image - ITO ANG IMPORTANTE
     if (imageWrapper) {
-        imageWrapper.style.display = 'flex';
+        imageWrapper.style.display = 'flex !important';
+        imageWrapper.style.flex = '1';
     }
     if (modalImg) {
         modalImg.style.display = 'block';
         modalImg.src = imgSrc || '';
+        modalImg.style.width = '100%';
+        modalImg.style.height = '100%';
+        modalImg.style.objectFit = 'contain';
+        modalImg.style.padding = '1rem';
         console.log('Image set to:', modalImg.src);
     }
     
@@ -244,7 +249,7 @@ function openModal(imgSrc, title, desc, tools, tag, tagIcon) {
         overlay.innerHTML = '<i class="bi bi-play-circle-fill"></i>';
     }
     
-    // Set content
+    // Set content - TITLE, DESCRIPTION, TOOLS
     if (modalTitle) modalTitle.textContent = title || 'Untitled';
     if (modalDesc) modalDesc.textContent = desc || 'No description available.';
     if (modalTag) modalTag.innerHTML = `<i class="bi ${tagIcon || 'bi-image'}"></i> ${tag || 'Graphics'}`;
