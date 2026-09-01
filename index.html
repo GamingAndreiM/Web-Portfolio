@@ -19,8 +19,13 @@
   <div id="mediaModal" class="media-modal">
     <span class="media-modal-close" onclick="closeModal()">&times;</span>
     <div class="media-modal-content" onclick="event.stopPropagation()">
-      <div class="media-modal-img-wrapper">
-        <img class="media-modal-img" id="modalImg" src="" alt="Project Image">
+      <!-- Video Player Container (for Videos) -->
+      <div class="video-player-wrapper" id="videoPlayerWrapper" style="display: none;">
+        <!-- YouTube iframe will be inserted here -->
+        <div id="videoContainer" style="width: 100%; height: 100%;"></div>
+        <div class="play-overlay" id="videoPlayOverlay" onclick="playModalVideo()">
+          <i class="bi bi-play-circle-fill"></i>
+        </div>
       </div>
       <div class="media-modal-body">
         <span class="media-modal-tag" id="modalTag"><i class="bi bi-palette"></i> Graphics</span>
@@ -29,12 +34,6 @@
         <div class="media-modal-tools" id="modalTools">
           <span class="skill-badge text-xs">Tool 1</span>
           <span class="skill-badge text-xs">Tool 2</span>
-        </div>
-        <!-- PLAY BUTTON PARA SA VIDEO - nakatago by default -->
-        <div id="videoPlayBtn" style="display: none; margin-top: 1rem;">
-          <a href="#" target="_blank" id="videoLink" class="btn-primary px-6 py-3 rounded-full font-semibold inline-flex items-center gap-2 text-white transition hover:scale-105">
-            <i class="bi bi-play-circle-fill text-xl"></i> Watch on YouTube
-          </a>
         </div>
       </div>
     </div>
@@ -194,7 +193,7 @@
       <div class="text-center mb-16">
         <span class="skill-badge text-purple-300 border-purple-500/30">✦ creative works</span>
         <h2 class="text-4xl md:text-5xl font-bold mt-5"><span class="gradient-text">MultiMedia</span> Projects</h2>
-        <p class="text-gray-400 max-w-2xl mx-auto mt-3">Click graphics & photos to view details | Click videos to view details and watch</p>
+        <p class="text-gray-400 max-w-2xl mx-auto mt-3">Click graphics & photos to view details | Click videos to watch</p>
       </div>
 
       <!-- ====== GRAPHICS DESIGN CATEGORY ====== -->
@@ -281,7 +280,7 @@
         </div>
       </div>
 
-      <!-- ====== VIDEO EDITS CATEGORY ====== -->
+      <!-- ====== VIDEO EDITS CATEGORY (YOUTUBE EMBED) ====== -->
       <div class="mb-16">
         <div class="category-header">
           <div class="category-icon"><i class="bi bi-film"></i></div>
@@ -289,48 +288,57 @@
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           
-          <!-- Video 1 -->
-          <div class="multimedia-card clickable-card" onclick="event.stopPropagation(); openVideoModalFromCard(this)">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <img src="./img/3_GONE_FOREVER.png" alt="Promotional Video" class="multimedia-img">
-              <div class="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/20 transition">
-                <i class="bi bi-play-circle-fill text-6xl text-white/80 hover:text-purple-400 transition"></i>
+          <!-- Video 1 - YouTube -->
+          <div class="multimedia-card clickable-card" onclick="event.stopPropagation(); openVideoModal(
+            'https://www.youtube.com/embed/QzMZrfscvA8?autoplay=0',
+            './img/tourist.png',
+            '10 American Tourists Killed By The Cartel',
+            'A short-form crime documentary video edited for portfolio purposes. Showcasing storytelling through video editing.',
+            ['Filmora', 'Adobe Premiere'],
+            'Video',
+            'bi-film',
+            true
+          )">
+            <div class="video-thumbnail rounded-xl mb-4">
+              <img src="./img/tourist.png" alt="Crime Documentary" class="multimedia-img">
+              <div class="play-icon-overlay">
+                <i class="bi bi-play-circle-fill"></i>
               </div>
             </div>
             <div class="flex items-start justify-between">
               <div>
-                <h3 class="text-lg font-bold line-clamp-2">20 Restaurants Every American Town Had In The 1970s That Faded Into History</h3>
-                <p class="text-gray-400 text-sm mt-1 line-clamp-2">An Ultra-Long Sleep Video for specialised by Mapture Media Company.</p>
+                <h3 class="text-lg font-bold line-clamp-2">Crime Documentary - Short Form</h3>
+                <p class="text-gray-400 text-sm mt-1 line-clamp-2">A short-form crime documentary video.</p>
               </div>
               <span class="multimedia-tag"><i class="bi bi-film"></i> Video</span>
             </div>
             <div class="flex flex-wrap gap-2 mt-3">
-              <span class="skill-badge text-xs">Filmora</span>           
-            </div>
-            <!-- DATA ATTRIBUTES para sa modal -->
-            <div style="display: none;" 
-                 data-img="./img/3_GONE_FOREVER.png"
-                 data-title="20 Restaurants Every American Town Had In The 1970s That Faded Into History"
-                 data-desc="Disclaimer: This video is displayed with the company's permission by the Production Manager for portfolio purposes only. Clicking this project will open the original video on the company's official YouTube channel. All rights remain with the Mapture Media company."
-                 data-tools='["Filmora"]'
-                 data-tag="Video"
-                 data-tagicon="bi-film"
-                 data-video="https://www.youtube.com/watch?v=S6kymYpg5f8&t=50s">
+              <span class="skill-badge text-xs">Filmora</span>
+              <span class="skill-badge text-xs">Premiere</span>           
             </div>
           </div>
 
-          <!-- Video 2 -->
-          <div class="multimedia-card clickable-card" onclick="event.stopPropagation(); openVideoModalFromCard(this)">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <img src="./img/20_Recipes_Black_Grandmas_Took_to_Their_Graves2.png" alt="Event Coverage" class="multimedia-img">
-              <div class="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/20 transition">
-                <i class="bi bi-play-circle-fill text-6xl text-white/80 hover:text-purple-400 transition"></i>
+          <!-- Video 2 - YouTube -->
+          <div class="multimedia-card clickable-card" onclick="event.stopPropagation(); openVideoModal(
+            'https://www.youtube.com/embed/YD2RNLf8PAI?autoplay=0',
+            './img/paradox.png',
+            'Rick and Morty\'s Biggest Paradoxes',
+            'A cartoon animation video edited for portfolio purposes. Showcasing creative editing and visual storytelling.',
+            ['Filmora', 'GenAIPro'],
+            'Video',
+            'bi-film',
+            true
+          )">
+            <div class="video-thumbnail rounded-xl mb-4">
+              <img src="./img/paradox.png" alt="Cartoon Animation" class="multimedia-img">
+              <div class="play-icon-overlay">
+                <i class="bi bi-play-circle-fill"></i>
               </div>
             </div>
             <div class="flex items-start justify-between">
               <div>
-                <h3 class="text-lg font-bold">20 Recipes Black Grandmas Took to Their Graves</h3>
-                <p class="text-gray-400 text-sm mt-1 line-clamp-2">An Ultra-Long Sleep Video specialised by Mapture Media Company.</p>
+                <h3 class="text-lg font-bold">Cartoon - Short Form</h3>
+                <p class="text-gray-400 text-sm mt-1 line-clamp-2">A short-form cartoon animation video.</p>
               </div>
               <span class="multimedia-tag"><i class="bi bi-film"></i> Video</span>
             </div>
@@ -338,44 +346,35 @@
               <span class="skill-badge text-xs">Filmora</span>
               <span class="skill-badge text-xs">GenAIPro</span>
             </div>
-            <div style="display: none;" 
-                 data-img="./img/20_Recipes_Black_Grandmas_Took_to_Their_Graves2.png"
-                 data-title="20 Recipes Black Grandmas Took to Their Graves"
-                 data-desc="Disclaimer: This video is displayed with the company's permission by the Production Manager for portfolio purposes only. Clicking this project will open the original video on the company's official YouTube channel. All rights remain with the Mapture Media company."
-                 data-tools='["Filmora", "GenAIPro"]'
-                 data-tag="Video"
-                 data-tagicon="bi-film"
-                 data-video="https://www.youtube.com/watch?v=6ZvLmzCfAdU">
-            </div>
           </div>
 
-          <!-- Video 3 -->
-          <div class="multimedia-card clickable-card" onclick="event.stopPropagation(); openVideoModalFromCard(this)">
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <img src="https://placehold.co/600x400/1a1a2e/ffffff?text=Uploading+Soon" alt="Music Video" class="multimedia-img">
-              <div class="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/20 transition">
-                <i class="bi bi-play-circle-fill text-6xl text-white/80 hover:text-purple-400 transition"></i>
+          <!-- Video 3 - YouTube -->
+          <div class="multimedia-card clickable-card" onclick="event.stopPropagation(); openVideoModal(
+            'https://www.youtube.com/embed/QvTMG1CFwq8?autoplay=0',
+            './img/Fall_Asleep_To_Dexter_VS_FBI.png',
+            'Fall Asleep To Dexter VS FBI - Long Form',
+            'Ultra-Long Form sleep video about Dexter Morgan in TV show.',
+            ['After Effects', 'Premiere Pro'],
+            'Video',
+            'bi-film',
+            true
+          )">
+            <div class="video-thumbnail rounded-xl mb-4">
+              <img src="./img/Fall_Asleep_To_Dexter_VS_FBI.png" alt="Dexter" class="multimedia-img">
+              <div class="play-icon-overlay">
+                <i class="bi bi-play-circle-fill"></i>
               </div>
             </div>
             <div class="flex items-start justify-between">
               <div>
-                <h3 class="text-lg font-bold">To be Upload soon..</h3>
-                <p class="text-gray-400 text-sm mt-1 line-clamp-2">Music video editing with visual effects and color grading.</p>
+                <h3 class="text-lg font-bold">Fall Asleep To Dexter VS FBI - Long Form</h3>
+                <p class="text-gray-400 text-sm mt-1 line-clamp-2">Ultra-Long Form sleep video about Dexter Morgan in TV show.</p>
               </div>
               <span class="multimedia-tag"><i class="bi bi-film"></i> Video</span>
             </div>
             <div class="flex flex-wrap gap-2 mt-3">
               <span class="skill-badge text-xs">After Effects</span>
               <span class="skill-badge text-xs">Premiere Pro</span>
-            </div>
-            <div style="display: none;" 
-                 data-img="https://placehold.co/600x400/1a1a2e/ffffff?text=Uploading+Soon"
-                 data-title="To be Upload soon.."
-                 data-desc="Music video editing with visual effects and color grading."
-                 data-tools='["After Effects", "Premiere Pro"]'
-                 data-tag="Video"
-                 data-tagicon="bi-film"
-                 data-video="https://www.youtube.com/watch?v=YOUR_VIDEO_ID_3">
             </div>
           </div>
 
