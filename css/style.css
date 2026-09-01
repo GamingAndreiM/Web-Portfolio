@@ -574,6 +574,8 @@ body {
     overflow: hidden !important;
     animation: modalSlideIn 0.4s ease !important;
     position: relative !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 @keyframes modalSlideIn {
@@ -612,7 +614,7 @@ body {
     border-color: rgba(168, 85, 247, 0.4) !important;
 }
 
-/* Image wrapper - FORCE DISPLAY */
+/* Image wrapper - default visible with class */
 .media-modal-img-wrapper {
     width: 100% !important;
     height: 450px !important;
@@ -621,6 +623,22 @@ body {
     align-items: center !important;
     justify-content: center !important;
     overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Image wrapper - hidden state (for video) */
+.media-modal-img-wrapper.hidden {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .media-modal-img {
@@ -629,6 +647,7 @@ body {
     object-fit: contain !important;
     padding: 1rem !important;
     display: block !important;
+    margin: 0 !important;
 }
 
 .media-modal-body {
@@ -680,6 +699,9 @@ body {
     .media-modal-img-wrapper {
         height: 280px !important;
     }
+    .media-modal-img-wrapper.hidden {
+        height: 0 !important;
+    }
     .media-modal-body {
         padding: 1rem 1.25rem !important;
     }
@@ -702,6 +724,9 @@ body {
     .media-modal-img-wrapper {
         height: 200px !important;
     }
+    .media-modal-img-wrapper.hidden {
+        height: 0 !important;
+    }
     .media-modal-body {
         padding: 0.75rem 1rem !important;
     }
@@ -715,12 +740,14 @@ body {
 .video-player-wrapper {
     width: 100% !important;
     height: 450px !important;
-    background: rgba(0, 0, 0, 0.5) !important;
+    background: rgba(0, 0, 0, 0) !important;
     display: none !important;
     align-items: center !important;
     justify-content: center !important;
     overflow: hidden !important;
     position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .video-player-wrapper.active {
@@ -730,12 +757,20 @@ body {
 .video-player-wrapper #videoContainer {
     width: 100% !important;
     height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 .video-player-wrapper #videoContainer iframe {
     width: 100% !important;
     height: 100% !important;
     border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
 }
 
 .video-player-wrapper #videoContainer video {
@@ -743,6 +778,9 @@ body {
     height: 100% !important;
     object-fit: contain !important;
     background: #000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
 }
 
 /* Play overlay */
@@ -757,6 +795,8 @@ body {
     transition: all 0.3s ease !important;
     z-index: 10 !important;
     pointer-events: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .video-player-wrapper .play-overlay.hidden {
@@ -841,6 +881,9 @@ body {
     .media-modal-img-wrapper {
         height: 280px !important;
     }
+    .media-modal-img-wrapper.hidden {
+        height: 0 !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -858,5 +901,8 @@ body {
     }
     .media-modal-img-wrapper {
         height: 200px !important;
+    }
+    .media-modal-img-wrapper.hidden {
+        height: 0 !important;
     }
 }

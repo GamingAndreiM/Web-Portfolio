@@ -23,11 +23,15 @@ function openVideoModal(videoSrc, posterImg, title, desc, tools, tag, tagIcon, i
     }
     
     // Clear previous video content
-    videoContainer.innerHTML = '';
+    if (videoContainer) {
+        videoContainer.innerHTML = '';
+    }
     
-    // HIDE image wrapper
+    // HIDE image wrapper using class
     if (imageWrapper) {
+        imageWrapper.classList.add('hidden');
         imageWrapper.style.display = 'none';
+        imageWrapper.style.height = '0';
     }
     if (modalImg) {
         modalImg.style.display = 'none';
@@ -37,6 +41,9 @@ function openVideoModal(videoSrc, posterImg, title, desc, tools, tag, tagIcon, i
     // SHOW video player wrapper
     if (wrapper) {
         wrapper.style.display = 'flex';
+        wrapper.style.visibility = 'visible';
+        wrapper.style.opacity = '1';
+        wrapper.style.height = '450px';
         wrapper.classList.add('active');
     }
     
@@ -47,6 +54,8 @@ function openVideoModal(videoSrc, posterImg, title, desc, tools, tag, tagIcon, i
         overlay.style.pointerEvents = 'auto';
         overlay.classList.remove('hidden');
         overlay.innerHTML = '<i class="bi bi-play-circle-fill"></i>';
+        overlay.style.margin = '0';
+        overlay.style.padding = '0';
         overlay.onclick = function(e) {
             e.stopPropagation();
             playModalVideo();
@@ -64,6 +73,9 @@ function openVideoModal(videoSrc, posterImg, title, desc, tools, tag, tagIcon, i
             iframe.style.width = '100%';
             iframe.style.height = '100%';
             iframe.style.border = 'none';
+            iframe.style.margin = '0';
+            iframe.style.padding = '0';
+            iframe.style.display = 'block';
             videoContainer.appendChild(iframe);
             
             // Hide overlay for YouTube
@@ -83,6 +95,9 @@ function openVideoModal(videoSrc, posterImg, title, desc, tools, tag, tagIcon, i
             video.style.height = '100%';
             video.style.objectFit = 'contain';
             video.style.background = '#000';
+            video.style.margin = '0';
+            video.style.padding = '0';
+            video.style.display = 'block';
             
             const source = document.createElement('source');
             source.src = videoSrc;
@@ -112,7 +127,7 @@ function openVideoModal(videoSrc, posterImg, title, desc, tools, tag, tagIcon, i
         }
     } else {
         // No video source (coming soon)
-        videoContainer.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.5);font-size:2rem;"><i class="bi bi-clock-history"></i> Coming Soon</div>';
+        videoContainer.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,0.5);font-size:2rem;margin:0;padding:0;"><i class="bi bi-clock-history"></i> Coming Soon</div>';
         if (overlay) {
             overlay.style.display = 'none';
         }
@@ -218,24 +233,32 @@ function openModal(imgSrc, title, desc, tools, tag, tagIcon) {
     // HIDE video player
     if (wrapper) {
         wrapper.style.display = 'none';
+        wrapper.style.visibility = 'hidden';
+        wrapper.style.opacity = '0';
         wrapper.classList.remove('active');
     }
     
-    // FORCE SHOW image wrapper with direct styles
+    // SHOW image wrapper - remove hidden class
     if (imageWrapper) {
+        imageWrapper.classList.remove('hidden');
         imageWrapper.style.display = 'flex';
+        imageWrapper.style.height = '450px';
+        imageWrapper.style.visibility = 'visible';
+        imageWrapper.style.opacity = '1';
+        imageWrapper.style.pointerEvents = 'auto';
         imageWrapper.style.alignItems = 'center';
         imageWrapper.style.justifyContent = 'center';
         imageWrapper.style.width = '100%';
-        imageWrapper.style.height = '450px';
         imageWrapper.style.background = 'rgba(0, 0, 0, 0.3)';
         imageWrapper.style.overflow = 'hidden';
         console.log('Image wrapper shown');
     }
     
-    // FORCE SHOW image with direct styles
+    // SHOW image
     if (modalImg) {
         modalImg.style.display = 'block';
+        modalImg.style.visibility = 'visible';
+        modalImg.style.opacity = '1';
         modalImg.src = imgSrc || '';
         modalImg.style.width = '100%';
         modalImg.style.height = '100%';
@@ -243,7 +266,6 @@ function openModal(imgSrc, title, desc, tools, tag, tagIcon) {
         modalImg.style.padding = '1rem';
         modalImg.style.background = 'transparent';
         console.log('Image set to:', modalImg.src);
-        console.log('Image display:', modalImg.style.display);
     }
     
     // Reset overlay
@@ -302,15 +324,24 @@ function closeModal() {
         // Hide video wrapper
         if (wrapper) {
             wrapper.style.display = 'none';
+            wrapper.style.visibility = 'hidden';
+            wrapper.style.opacity = '0';
             wrapper.classList.remove('active');
         }
         
-        // Show image wrapper with image
+        // Show image wrapper - reset to default
         if (imageWrapper) {
+            imageWrapper.classList.remove('hidden');
             imageWrapper.style.display = 'flex';
+            imageWrapper.style.height = '450px';
+            imageWrapper.style.visibility = 'visible';
+            imageWrapper.style.opacity = '1';
+            imageWrapper.style.pointerEvents = 'auto';
         }
         if (modalImg) {
             modalImg.style.display = 'block';
+            modalImg.style.visibility = 'visible';
+            modalImg.style.opacity = '1';
             modalImg.src = '';
         }
         

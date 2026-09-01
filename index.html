@@ -20,10 +20,11 @@
     <span class="media-modal-close" onclick="closeModal()">&times;</span>
     <div class="media-modal-content" onclick="event.stopPropagation()">
       <!-- Image Container (for Graphics/Photos) -->
-
+      <div class="media-modal-img-wrapper" id="imageWrapper">
+        <img class="media-modal-img" id="modalImg" src="" alt="Project Image">
+      </div>
       <!-- Video Player Container (for Videos) -->
       <div class="video-player-wrapper" id="videoPlayerWrapper" style="display: none;">
-        <!-- YouTube iframe will be inserted here -->
         <div id="videoContainer" style="width: 100%; height: 100%;"></div>
         <div class="play-overlay" id="videoPlayOverlay" onclick="playModalVideo()">
           <i class="bi bi-play-circle-fill"></i>
